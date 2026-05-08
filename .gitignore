@@ -1,0 +1,39 @@
+# --- VS Code ---
+.vscode/
+*.code-workspace
+.history/
+
+# --- Java ---
+*.class
+*.jar
+*.war
+*.ear
+bin/
+.project
+.classpath
+.settings/
+.metadata/
+
+# --- C# (.NET) ---
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+
+# --- Node.js (Cho Extension LeetCode) ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm/
+
+# --- OS rác ---
+Thumbs.db
+.DS_Store
+desktop.ini
