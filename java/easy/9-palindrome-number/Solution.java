@@ -56,27 +56,55 @@
 
 // @lc code=start
 class Solution {
+
+    // OPTIMIZED SOLUTION:
     /**
      * Problem: 9. Palindrome Number
      * Difficulty: Easy
      * THOUGHT PROCESS:
      * - The nature of palindrome numbers is that they read the same forwards and
      * backwards.
-     * - Current method: Convert to a string to reverse.
-     * - Advantages: The code is extremely short and easy to read.
-     * - Disadvantages: It uses extra space to store the string representation of
-     * the number.
+     * - Current method: Reverse the number mathematically without converting to a
+     * string.
+     * New number is built by taking the last digit of the original number and
+     * appending it to the new number.
+     * We then remove the last digit from the original number and repeat until the
+     * original number is reduced to 0.
+     * - Advantages:
+     * - Disadvantages:
      * COMPLEXITY:
-     * * Time Complexity: O(n) - n is number of digits.
-     * Space Complexity: O(n) - store string representation.
+     * * Time Complexity: O(n) - n is number of digits, we need to process each
+     * digit once.
+     * * Space Complexity: O(1) - no extra space used.
      */
+
     public boolean isPalindrome(int x) {
         if (x < 0) {
             return false;
         }
-        StringBuilder sb = new StringBuilder();
-        sb.append(x);
-        return sb.reverse().toString().equals(String.valueOf(x));
+        int newNum = 0;
+        int temp = x;
+        while (temp > 0) {
+            newNum = newNum * 10 + temp % 10;
+            temp = temp / 10;
+        }
+        return newNum == x;
     }
+
+    /*
+     * ---------------------------------------------------------
+     * ALTERNATIVE APPROACH: String Conversion
+     * Time: O(n), Space: O(n)
+     * Lower in terms of memory performance, but the code is easier to read.     * ---------------------------------------------------------
+     * public boolean isPalindrome(int x) {
+     *  if (x < 0) {
+     *      return false;
+     *  }
+     *  StringBuilder sb = new StringBuilder();
+     *  sb.append(x);
+     *  return sb.reverse().toString().equals(String.valueOf(x));
+     * }
+     */
+
 }
 // @lc code=end
