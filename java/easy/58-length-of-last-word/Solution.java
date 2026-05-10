@@ -56,22 +56,50 @@
 
 // @lc code=start
 class Solution {
+    // OPTIMIZED SOLUTION
+
     /**
      * Problem: 58. Length of Last Word
      * Difficult: Easy
      * THOUGHT PROCESS:
      * - Mục tiêu: Tìm độ dài của từ cuối trong chuỗi.
-     * - Cách tiếp cận: Sử dụng hàm trim()  để xóa khoảng trắng đầu và cuối, sau đó dùng split() chuỗi dựa trên khoảng trắng để lấy phần tử các mảng.
-     * Ưu: ngắn gọn, dễ hiểu.
-     * Nhược: Tạo ra mảng phụ (split) nếu TH có 10000 từ tốn rất nhiều RAM. 
+     * - Cách tiếp cận: Các từ được phân cách bởi dấu cách, duyệt từ cuối đến khi
+     * nào gặp khoảng trắng.
      * COMPLEXITY:
-     * - Time Complexity: O(n). trim() và split() đều phải duyệt ra mảng. 
-     * - Space Complexity: O(n). split() tạo ra mảng tương đương với số từ. 
+     * - Time Complexity: O(n). Trường hợp xấu nhất phải duyệt qua cả chuỗi. 
+     * - Space Complexity: O(n).
      */
+
     public int lengthOfLastWord(String s) {
-        String[] strs = s.trim().split("\\s+");
-        return strs[strs.length-1].length();
+        int length = 0;
+        int i = s.length() - 1; 
+        while(i>=0 && s.charAt(i)==' '){
+            i--;
+        }
+        while(i>=0 && s.charAt(i)!=' '){
+            length++;
+            i--;
+        }
+        return length;
     }
+
+    /*
+     * Problem: 58. Length of Last Word
+     * Difficult: Easy
+     * THOUGHT PROCESS:
+     * - Mục tiêu: Tìm độ dài của từ cuối trong chuỗi.
+     * - Cách tiếp cận: Sử dụng hàm trim() để xóa khoảng trắng đầu và cuối, sau đó
+     * dùng split() chuỗi dựa trên khoảng trắng để lấy phần tử các mảng.
+     * Ưu: ngắn gọn, dễ hiểu.
+     * Nhược: Tạo ra mảng phụ (split) nếu TH có 10000 từ tốn rất nhiều RAM.
+     * COMPLEXITY:
+     * - Time Complexity: O(n). trim() và split() đều phải duyệt ra mảng.
+     * - Space Complexity: O(n). split() tạo ra mảng tương đương với số từ.
+     * 
+     * public int lengthOfLastWord(String s) {
+     * String[] strs = s.trim().split("\\s+");
+     * return strs[strs.length-1].length();
+     * }
+     */
 }
 // @lc code=end
-
