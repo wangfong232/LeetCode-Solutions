@@ -61,31 +61,48 @@
 
 // @lc code=start
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 class Solution {
-    /**
-    * Problem: 217. Contains Duplicate
+
+    /*
+     * Cách 1: Tối ưu về thời gian
+     * Problem: 217. Contains Duplicate
      * Difficulty: Easy
      * THOUGHT PROCESS:
-     * - Sử dụng HashSet để lưu các phần tử đã duyệt qua. 
-     * - Với mỗi phần tử, kiểm tra xem nó đã tồn tại trong Set chưa. 
+     * - Sử dụng HashSet để lưu các phần tử đã duyệt qua.
+     * - Với mỗi phần tử, kiểm tra xem nó đã tồn tại trong Set chưa.
      * - Nếu đã tồn tại -> Trả về true (có trùng lặp)
-     * - Nếu chưa tồn tại -> Thêm vào Set và tiếp tục. 
+     * - Nếu chưa tồn tại -> Thêm vào Set và tiếp tục.
      * 
      * COMPLEXITY:
-     * - Time Complexity: O(n) - Duyệt qua mảng 
-     * - Space Copmlexity: O(n) - Trong TH xấu nhất, Set sẽ lưu trữ toàn bộ n phần tử của mảng. 
-     */
+     * - Time Complexity: O(n) - Duyệt qua mảng
+     * - Space Copmlexity: O(n) - Trong TH xấu nhất, Set sẽ lưu trữ toàn bộ n phần
+     * tử của mảng.
+     **/
     public boolean containsDuplicate(int[] nums) {
         HashSet<Integer> seen = new HashSet<>();
-        for(int num : nums){
-            if(!seen.add(num)){
+        for (int num : nums) {
+            if (!seen.add(num)) {
                 return true;
             }
         }
         return false;
     }
+    
+    /**
+     * Cách 2: Tối ưu về không gian:
+     * Time: O(n log n) | Space: O(1)
+    
+    public boolean containsDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == nums[i + 1])
+                return true;
+        }
+        return false;
+    }
+    */
 }
 // @lc code=end
-
